@@ -46,3 +46,9 @@ Subnets divide a VPC into smaller network segments.
 Load balancing distributes traffic across multiple servers.
 Auto Scaling automatically adjusts resources based on demand.
 High availability ensures systems remain operational with minimal downtime.
+DevOps is a set of practices that combines software development and IT operations to improve collaboration and automate workflows.
+Cloud computing is the delivery of computing services over the internet, including servers, storage, and networking.
+Computing refers to the use of computers to process data and perform calculations.
+An LLM (Large Language Model) is an AI model trained on large datasets to understand and generate human-like text.
+Microservices are an architectural style where applications are built as a collection of small, independent services.
+Containers package applications with their dependencies to run consistently across environments.

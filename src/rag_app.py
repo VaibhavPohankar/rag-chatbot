@@ -6,6 +6,9 @@ import faiss
 from sentence_transformers import SentenceTransformer
 from difflib import SequenceMatcher
 
+# Toggle context visibility
+SHOW_CONTEXT = True   # set False for clean output
+
 # Load embedding model
 embedder = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -32,7 +35,7 @@ def similarity(a, b):
 def normalize(token: str) -> str:
     token = token.lower()
     token = re.sub(r'[^a-z0-9]', '', token)
-    token = re.sub(r'(.)\1{2,}', r'\1', token)  # allow max 2 repeats
+    token = re.sub(r'(.)\1{2,}', r'\1', token)  # limit repeats
     return token
 
 def clean_query(query):
@@ -58,7 +61,6 @@ def is_person_question(query):
 def is_metadata(line):
     return line.lower().startswith("author")
 
-# 🔥 FIX: remove strict distance filter
 def retrieve(query, k=3):
     query_embedding = embedder.encode([query])
     _, indices = index.search(np.array(query_embedding), k)
@@ -73,14 +75,21 @@ def best_context(query, contexts):
     for ctx in contexts:
         ctx_words = [normalize(w) for w in re.findall(r'\b\w+\b', ctx)]
 
-        score = 0
+        exact_score = 0
+        fuzzy_score = 0
+
         for kw in keywords:
-            if len(kw) < 3:   # 🚫 ignore very short noisy tokens
+            if len(kw) < 3:
                 continue
 
-            for w in ctx_words:
-                if kw == w or similarity(kw, w) >= 0.82:
-                    score += 1
+            if kw in ctx_words:
+                exact_score += 2
+            else:
+                for w in ctx_words:
+                    if similarity(kw, w) >= 0.82:
+                        fuzzy_score += 1
+
+        score = exact_score + fuzzy_score
 
         if score > best_score:
             best_score = score
@@ -99,17 +108,20 @@ while True:
     contexts = [c for c in retrieve(query, k=3) if not is_metadata(c)]
 
     if is_person_question(query):
-        print("Contexts:", contexts)
+        if SHOW_CONTEXT:
+            print("Contexts:", contexts)
         print("Answer: I don't know")
         continue
 
     best, score = best_context(query, contexts)
 
-    # require at least 1 strong match
     if score == 0:
-        print("Contexts:", contexts)
+        if SHOW_CONTEXT:
+            print("Contexts:", contexts)
         print("Answer: I don't know")
         continue
 
-    print("Contexts:", contexts)
+    if SHOW_CONTEXT:
+        print("Contexts:", contexts)
+
     print("Answer:", best)
