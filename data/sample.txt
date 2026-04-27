@@ -1,4 +1,48 @@
-AWS is a cloud platform.
-Terraform is used for infrastructure as code.
-Docker is used for containerization.
-Kubernetes is used for container orchestration.
+AWS is a cloud platform that provides scalable computing services over the internet.
+EC2 is a virtual server service provided by AWS.
+S3 is an object storage service used to store and retrieve data in AWS.
+IAM is used for access control and identity management in AWS.
+
+Docker is a containerization platform used to package applications and their dependencies.
+Docker images are lightweight, portable files that contain application code and runtime.
+Docker containers are running instances of Docker images.
+
+Kubernetes is a container orchestration system used to manage containerized applications.
+Pods are the smallest deployable units in Kubernetes.
+Deployments in Kubernetes manage application updates and scaling.
+
+Terraform is an infrastructure as code tool used to provision and manage cloud resources.
+Terraform uses configuration files written in HCL (HashiCorp Configuration Language).
+Terraform allows automation of infrastructure provisioning.
+
+CI/CD is a software development practice that automates integration and deployment.
+Jenkins is a popular CI/CD tool used to automate pipelines.
+GitHub Actions is a CI/CD service integrated with GitHub repositories.
+
+Git is a version control system used to track changes in code.
+GitHub is a platform used to host and manage Git repositories.
+Branches in Git are used to develop features independently.
+
+Linux is an open-source operating system widely used in servers.
+Shell scripting is used to automate tasks in Linux environments.
+Cron jobs are used to schedule tasks in Linux systems.
+
+Monitoring tools like Prometheus and Grafana are used to track system performance.
+CloudWatch is a monitoring service provided by AWS.
+Logging helps in debugging and troubleshooting systems.
+
+An API (Application Programming Interface) allows communication between software systems.
+REST APIs use HTTP methods like GET, POST, PUT, and DELETE.
+JSON is a lightweight data format used in APIs.
+
+A virtual machine is an emulation of a physical computer.
+Containers are lightweight alternatives to virtual machines.
+Microservices architecture divides applications into small, independent services.
+
+Networking involves communication between systems over a network.
+A VPC (Virtual Private Cloud) is a private network in AWS.
+Subnets divide a VPC into smaller network segments.
+
+Load balancing distributes traffic across multiple servers.
+Auto Scaling automatically adjusts resources based on demand.
+High availability ensures systems remain operational with minimal downtime.
