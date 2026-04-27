@@ -1,4 +1,4 @@
-# RAG Chatbot (FAISS + Semantic Retrieval)
+# 🧠 RAG Chatbot (FAISS + Semantic Retrieval)
 
 A retrieval-based AI system that answers user queries using semantic search, fuzzy matching, and strict grounding to avoid hallucinations.
 
@@ -6,30 +6,33 @@ A retrieval-based AI system that answers user queries using semantic search, fuz
 
 ## 🚀 Features
 
-- Semantic search using SentenceTransformers
-- FAISS vector database for fast retrieval
-- Fuzzy matching for typo tolerance
-- Query normalization (handles noisy input)
-- Intent filtering (rejects invalid queries like "who is docker")
-- Hallucination-free responses (only grounded answers)
+- 🔍 Semantic search using SentenceTransformers  
+- ⚡ FAISS vector database for fast similarity search  
+- 🧩 Fuzzy matching for typo tolerance (e.g., "dockr", "kubernets")  
+- 🧹 Query normalization for noisy inputs  
+- 🚫 Intent filtering (rejects invalid queries like "who is docker")  
+- ✅ Hallucination-free responses (answers only from retrieved context)  
 
 ---
 
 ## 🧱 Architecture
 
-Query → Embedding → FAISS → Context Retrieval → Filtering → Answer
+```
+User Query → Cleaning → Embedding → FAISS → Context Retrieval → Filtering → Answer
+```
 
 ---
 
 ## 📂 Project Structure
 
 ```
-src/
-  rag_app.py
-data/
-  sample.txt
-requirements.txt
-README.md
+rag-chatbot/
+├── src/
+│   └── rag_app.py
+├── data/
+│   └── sample.txt
+├── requirements.txt
+└── README.md
 ```
 
 ---
@@ -56,6 +59,9 @@ python src/rag_app.py
 Ask: what is docker
 Answer: Docker is used for containerization.
 
+Ask: what is kubernetse
+Answer: Kubernetes is used for container orchestration.
+
 Ask: what is llm
 Answer: I don't know
 ```
@@ -64,13 +70,24 @@ Answer: I don't know
 
 ## 🧠 Key Learnings
 
-- Semantic vs keyword retrieval
-- Handling noisy inputs in AI systems
-- Importance of grounding to avoid hallucination
-- Basics of RAG architecture
+- Difference between keyword-based and semantic retrieval  
+- Handling noisy user inputs and typos  
+- Importance of grounding to prevent hallucination  
+- Core concepts of Retrieval-Augmented Generation (RAG)  
+- Trade-offs between deterministic vs generative AI systems  
+
+---
+
+## 🚀 Future Improvements
+
+- Add LLM-based answer generation  
+- Support document ingestion (PDF, TXT, etc.)  
+- Deploy as a web app (Streamlit / FastAPI)  
+- Improve multi-context reasoning  
 
 ---
 
 ## 👤 Author
 
-Vaibhav Pohankar
+**Vaibhav Pohankar**  
+DevOps | Cloud | AI Systems  
