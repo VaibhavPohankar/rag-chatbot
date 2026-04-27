@@ -1,0 +1,4 @@
+AWS is a cloud platform.
+Terraform is used for infrastructure as code.
+Docker is used for containerization.
+Kubernetes is used for container orchestration.
